@@ -4,6 +4,7 @@ Recieves command from Linebot, and generates message based on the commanda
 """
 
 import re
+from flask import session
 
 def pattern_match_new(msg:str) -> int:
     """
@@ -59,20 +60,10 @@ def pattern_match_record(msg:str) -> list[str]:
         # Return None if the input does not match the pattern
         return []
 
+def pattern_match_explain(msg:str):
+    pattern = r'^! ?explain$'
 
-
-# def message_handler(msg:str):
-#     leading_symbol = msg[0]
-#     command = msg[1:].strip()
-
-
-#     if leading_symbol == "!":
-#         return "Parsing with ChatGPT"
-#     elif leading_symbol == "?":
-#         return "Interacting with server"
-#     else:
-#         return "Invalid command"
-
+    return re.match(pattern, msg)
 
 def message_handler(msg:str):
     leading_symbol = msg[0]
@@ -81,12 +72,17 @@ def message_handler(msg:str):
 
     # match ! new
     if vocab_n := pattern_match_new(msg):
-        return f"get_vocab_from_GPT({vocab_n})"
+        session['counter'] = session['counter'] + 1
+        return f"get_vocab_from_GPT({vocab_n}), {session['counter']}"
 
     # match ? a b c, indicating that the user does not recognize vocabulary a, b and c
     if unknown_match_list := pattern_match_record(msg):
         # record(unknown_match_list)
         return f"Word list {unknown_match_list} saved"
+
+    if pattern_match_explain(msg):
+        return "Explaining current data"
     else:
-        return "Invalid command"
+        session['counter'] == 0
+        return "Invalid command. Reset session."
 
