@@ -8,6 +8,9 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+
+from parse_command import message_handler
+
 #======python的函數庫==========
 import tempfile, os
 import datetime
@@ -26,16 +29,16 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # openai.api_key = os.getenv('OPENAI_API_KEY')
 
 
-def GPT_response(text):
+# def GPT_response(text):
 
-    return "Returning:" + text
+#     return "Returning:" + text
 
-    # 接收回應
-    response = openai.Completion.create(model="gpt-3.5-turbo-instruct", prompt=text, temperature=0.5, max_tokens=500)
-    print(response)
-    # 重組回應
-    answer = response['choices'][0]['text'].replace('。','')
-    return answer
+#     # 接收回應
+#     response = openai.Completion.create(model="gpt-3.5-turbo-instruct", prompt=text, temperature=0.5, max_tokens=500)
+#     print(response)
+#     # 重組回應
+#     answer = response['choices'][0]['text'].replace('。','')
+#     return answer
 
 
 # 監聽所有來自 /callback 的 Post Request
@@ -59,7 +62,7 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     try:
-        GPT_answer = GPT_response(msg)
+        GPT_answer = message_handler(msg)
         print(GPT_answer)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
     except:
