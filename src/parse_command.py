@@ -89,9 +89,11 @@ def GPT_response(text):
     return answer
 
 def gen_sentence(word_list:list[str]):
-    prompt = "use the following vocabularies in a sentence that resembles a GRE verbal test:"
-    prompt += ", ".join(word_list)
+    prompt = f""" use the following vocabularies in a sentence that resembles a GRE verbal test:"
+        {'', ''.join(word_list)}
 
+    then, explain why these word can be used in this context.
+    """
     word_labeled  = '  '.join([f"{chr(97 + i)}) {item}" for i, item in enumerate(word_list)])
 
     respond = GPT_response(prompt)
