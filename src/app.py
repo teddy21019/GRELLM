@@ -9,7 +9,7 @@ from linebot.exceptions import (
 from linebot.models import *
 
 
-from parse_command import message_handler
+from .parse_command import message_handler
 
 #======python的函數庫==========
 import tempfile, os
