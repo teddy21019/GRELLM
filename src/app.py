@@ -28,6 +28,10 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # OPENAI API Key初始化設定
 # openai.api_key = os.getenv('OPENAI_API_KEY')
 
+global vocabs
+with open("wordlist/gre.txt", "r") as f:
+    vocabs = [line.rstrip() for line in f]
+
 
 # def GPT_response(text):
 

@@ -4,7 +4,7 @@ Recieves command from Linebot, and generates message based on the commanda
 """
 
 import re
-from flask import session
+from random import sample
 
 def pattern_match_new(msg:str) -> int:
     """
@@ -44,21 +44,35 @@ def pattern_match_record(msg:str) -> list[str]:
     Input: '! newa' -> Output: None
     Input: '!newa' -> Output: None
     """
-    pattern = r'^\? ?([a-zA-Z]+(?: [a-zA-Z]+)*) *$'
+    pattern = r'^\? ?(?!.*([a-zA-Z]).*\1)[a-zA-Z]+( [a-zA-Z]+)* *$'
 
-
-    # Match the pattern against the input string
+        # Match the pattern against the input string
     match = re.match(pattern, msg)
 
     if match:
-        # Extract the matching part of the string
-        matched_string:str = match.group(1)
-        # Split the string by spaces to get the list of words
-        words = matched_string.split()
-        return words
+        # Extract the part of the string after the `?` and split it into words
+        matched_string = msg[2:].strip()
+        # Join the words and extract unique characters
+        unique_alphabets = set(matched_string.replace(" ", ""))
+        return list(unique_alphabets)
     else:
         # Return None if the input does not match the pattern
         return []
+
+def pattern_match_prompt(input_string):
+    # Define the regular expression pattern
+    pattern = r'^! ?(.*)$'
+
+    # Match the pattern against the input string
+    match = re.match(pattern, input_string)
+
+    if match:
+        # Extract the text after the `!`
+        extracted_text = match.group(1)
+        return extracted_text.strip()  # Strip leading and trailing spaces
+    else:
+        # Return None if the input does not match the pattern
+        return ""
 
 def pattern_match_explain(msg:str):
     pattern = r'^! ?explain$'
@@ -72,8 +86,7 @@ def message_handler(msg:str):
 
     # match ! new
     if vocab_n := pattern_match_new(msg):
-        session['counter'] = session['counter'] + 1
-        return f"get_vocab_from_GPT({vocab_n}), {session['counter']}"
+        return ", ".join(sample(vocabs, vocab_n))
 
     # match ? a b c, indicating that the user does not recognize vocabulary a, b and c
     if unknown_match_list := pattern_match_record(msg):
@@ -82,7 +95,8 @@ def message_handler(msg:str):
 
     if pattern_match_explain(msg):
         return "Explaining current data"
+    if prompt := pattern_match_prompt(msg):
+        return prompt
     else:
-        session['counter'] == 0
-        return "Invalid command. Reset session."
+        return "Invalid command."
 
