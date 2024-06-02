@@ -3,7 +3,8 @@ numpy
 flask
 gunicorn
 line-bot-sdk
-# langchain
-# langchain-openai
+langchain
+openai
+langchain-openai
 
 
