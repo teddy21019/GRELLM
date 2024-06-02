@@ -4,6 +4,7 @@ Recieves command from Linebot, and generates message based on the commanda
 """
 
 import re
+import openai
 from random import sample
 
 def pattern_match_new(msg:str) -> int:
@@ -44,7 +45,7 @@ def pattern_match_record(msg:str) -> list[str]:
     Input: '! newa' -> Output: None
     Input: '!newa' -> Output: None
     """
-    pattern = r'^\? ?(?!.*([a-zA-Z]).*\1)[a-zA-Z]+( [a-zA-Z]+)* *$'
+    pattern = r'^\? [a-zA-Z]+( [a-zA-Z]+)* *$'
 
         # Match the pattern against the input string
     match = re.match(pattern, msg)
@@ -79,6 +80,26 @@ def pattern_match_explain(msg:str):
 
     return re.match(pattern, msg)
 
+def GPT_response(text):
+    # 接收回應
+    response = openai.Completion.create(model="gpt-3.5-turbo", prompt=text, temperature=0.5, max_tokens=500)
+    print(response)
+    # 重組回應
+    answer = response['choices'][0]['text'].replace('。','')
+    return answer
+
+def gen_sentence(word_list:list[str]):
+    prompt = "use the following vocabularies in a sentence that resembles a GRE verbal test:"
+    prompt += ", ".join(word_list)
+
+    word_labeled  = '  '.join([f"{chr(97 + i)}) {item}" for i, item in enumerate(word_list)])
+
+    respond = GPT_response(prompt)
+    respond += f"\n {word_labeled}"
+
+    return respond
+
+
 def message_handler(msg:str, vocabs):
     leading_symbol = msg[0]
     command = msg[1:].strip()
@@ -86,7 +107,7 @@ def message_handler(msg:str, vocabs):
 
     # match ! new
     if vocab_n := pattern_match_new(msg):
-        return ", ".join(sample(vocabs, vocab_n))
+        return gen_sentence(sample(vocabs, vocab_n))
 
     # match ? a b c, indicating that the user does not recognize vocabulary a, b and c
     if unknown_match_list := pattern_match_record(msg):
