@@ -80,23 +80,22 @@ def pattern_match_explain(msg:str):
 
     return re.match(pattern, msg)
 
-def GPT_response(text):
+def GPT_response(message:dict[str, str]):
     # 接收回應
-    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", prompt=text, temperature=0.5, max_tokens=500)
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", prompt=message, temperature=0.5, max_tokens=500)
     print(response)
     # 重組回應
-    answer = response['choices'][0]['text'].replace('。','')
+    answer = response.choices[0].message.content.strip()
     return answer
 
 def gen_sentence(word_list:list[str]):
-    prompt = f""" use the following vocabularies in a sentence that resembles a GRE verbal test:"
-        {'', ''.join(word_list)}
-
-    then, explain why these word can be used in this context.
-    """
+    messages = [
+        {"role": "system", "content": "use the following vocabularies in a sentence that resembles a GRE verbal test. After the sentence, explain why these words make sense in this context."},
+        {"role": "user", "content": " ".join(word_list)},
+    ]
     word_labeled  = '  '.join([f"{chr(97 + i)}) {item}" for i, item in enumerate(word_list)])
 
-    respond = GPT_response(prompt)
+    respond = GPT_response(messages)
     respond += f"\n {word_labeled}"
 
     return respond
