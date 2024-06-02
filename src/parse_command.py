@@ -7,6 +7,14 @@ import re
 import openai
 from random import sample
 
+
+
+instructions = """
+Your task is to help a student to improve its vocabulary for a GRE task by providing sentences based on a list of vocab.
+Note that the GRE Verbal Reasoning Test will test a student's vocabulary in a variety of different ways. Multiple choice questions will check your understanding of reading comprehension passages. On text completion questions, a student will need to identify individual words that best fit in a sentence. On sentence equivalence questions, you will be asked to select two words that have essentially the same meaning and that best complete a sentence.
+Your task is to 1. Use the vocabularies provided in the prompt in a complex sentence that best help a student with a GRE verbal test 2. After the sentence, explain why these words make sense in this context.
+"""
+
 def pattern_match_new(msg:str) -> int:
     """
     Input: '!new' -> Output: 3
@@ -90,7 +98,7 @@ def GPT_response(messages:dict[str, str]):
 
 def gen_sentence(word_list:list[str]):
     messages = [
-        {"role": "system", "content": "use the following vocabularies in a sentence that resembles a GRE verbal test. After the sentence, explain why these words make sense in this context."},
+        {"role": "system", "content": instructions},
         {"role": "user", "content": " ".join(word_list)},
     ]
     word_labeled  = '  '.join([f"{chr(97 + i)}) {item}" for i, item in enumerate(word_list)])
