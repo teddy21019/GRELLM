@@ -3,8 +3,5 @@ numpy
 flask
 gunicorn
 line-bot-sdk
-langchain
-openai
-langchain-openai
-
+openai == 0.28
 
