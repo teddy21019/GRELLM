@@ -82,7 +82,7 @@ def pattern_match_explain(msg:str):
 
 def GPT_response(message:dict[str, str]):
     # 接收回應
-    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", prompt=message, temperature=0.5, max_tokens=500)
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", message=message, temperature=0.5, max_tokens=500)
     print(response)
     # 重組回應
     answer = response.choices[0].message.content.strip()
