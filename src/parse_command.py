@@ -79,7 +79,7 @@ def pattern_match_explain(msg:str):
 
     return re.match(pattern, msg)
 
-def message_handler(msg:str):
+def message_handler(msg:str, vocabs):
     leading_symbol = msg[0]
     command = msg[1:].strip()
 

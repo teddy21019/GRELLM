@@ -28,7 +28,7 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # OPENAI API Key初始化設定
 # openai.api_key = os.getenv('OPENAI_API_KEY')
 
-global vocabs
+
 with open("wordlist/gre.txt", "r") as f:
     vocabs = [line.rstrip() for line in f]
 
@@ -66,7 +66,7 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     try:
-        GPT_answer = message_handler(msg)
+        GPT_answer = message_handler(msg, vocabs)
         print(GPT_answer)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
     except:
