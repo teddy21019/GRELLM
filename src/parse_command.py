@@ -82,7 +82,7 @@ def pattern_match_explain(msg:str):
 
 def GPT_response(text):
     # 接收回應
-    response = openai.completion.create(model="gpt-3.5-turbo", prompt=text, temperature=0.5, max_tokens=500)
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", prompt=text, temperature=0.5, max_tokens=500)
     print(response)
     # 重組回應
     answer = response['choices'][0]['text'].replace('。','')
