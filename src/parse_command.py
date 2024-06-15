@@ -8,12 +8,8 @@ import openai
 from random import sample
 
 
-
-instructions = """
-Your task is to help a student to improve its vocabulary for a GRE task by providing sentences based on a list of vocab.
-Note that the GRE Verbal Reasoning Test will test a student's vocabulary in a variety of different ways. Multiple choice questions will check your understanding of reading comprehension passages. On text completion questions, a student will need to identify individual words that best fit in a sentence. On sentence equivalence questions, you will be asked to select two words that have essentially the same meaning and that best complete a sentence.
-Your task is to 1. Use the vocabularies provided in the prompt in a complex sentence that best help a student with a GRE verbal test 2. After the sentence, explain why these words make sense in this context.
-"""
+with open('./instruction.txt', 'r') as file:
+    instructions = file.read().replace('\n', '')
 
 def pattern_match_new(msg:str) -> int:
     """
