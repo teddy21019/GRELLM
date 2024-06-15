@@ -11,6 +11,10 @@ from random import sample
 with open('./instruction.txt', 'r') as file:
     instructions = file.read().replace('\n', '')
 
+def save_vocab(vocabs: list[str]):
+    pass
+
+
 def pattern_match_new(msg:str) -> int:
     """
     Input: '!new' -> Output: 3
@@ -35,19 +39,9 @@ def pattern_match_new(msg:str) -> int:
         # Return None if the input does not match the pattern
         return 0
 
-
-
-
 def pattern_match_record(msg:str) -> list[str]:
     """
-    Input: '!new' -> Output: 3
-    Input: '! new' -> Output: 3
-    Input: '! new 3' -> Output: 3
-    Input: '!new 9' -> Output: 9
-    Input: '! new 10' -> Output: None
-    Input: '!new 10' -> Output: None
-    Input: '! newa' -> Output: None
-    Input: '!newa' -> Output: None
+    Input: '?ab' -> Output: [a, b]
     """
     pattern = r'^\? [a-zA-Z]+( [a-zA-Z]+)* *$'
 
@@ -86,7 +80,7 @@ def pattern_match_explain(msg:str):
 
 def GPT_response(messages:dict[str, str]):
     # 接收回應
-    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages, temperature=0.5, max_tokens=500)
+    response = openai.ChatCompletion.create(model="gpt-4o", messages=messages, temperature=0.5, max_tokens=500)
     print(response)
     # 重組回應
     answer = response.choices[0].message.content.strip()
@@ -101,6 +95,8 @@ def gen_sentence(word_list:list[str]):
 
     respond = GPT_response(messages)
     respond += f"\n {word_labeled}"
+
+    save_vocab(word_labeled)
 
     return respond
 
