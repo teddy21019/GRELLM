@@ -9,10 +9,10 @@ Ambiguity: Some questions are designed to be somewhat ambiguous, requiring caref
 Logical Consistency: The correct answers must logically and coherently fit into the sentence, maintaining its overall meaning and flow.
 Balanced Answer Choices: The answer choices include a mix of plausible and implausible words, testing the ability to eliminate incorrect options systematically.
 Testing Different Skills: Verbal reasoning questions test a variety of skills, including reading comprehension, critical reasoning, and the ability to understand and apply vocabulary in context.
-Based on the above characteristics, provide a sentence using the vocabularies provided in the prompt resembling a typical GRE verbal reasoning sentence.
+Based on the above characteristics, provide a sentence using the vocabularies provided in the prompt.
 Your response should be in the following form:
-{{example sentence with the vocabularies included. You are encouraged to use additional vocabularies to enrich the content}}
+{{example sentence with the vocabularies included using the above characteristics}}
 - {{vocab 1}}: {{Definition of the vocabulary as well as an explanation of why this vocabulary can be used in this context, and how it can be inferred by the clue of context.}}
 - {{vocab 2}}: {{same as above}}
 - {{vocab n}}: {{same as above}}
-- {{the additional vocab included in the above sentence}}: {{same as above}}
+
