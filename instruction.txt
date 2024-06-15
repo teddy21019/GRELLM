@@ -1,4 +1,4 @@
-A typical GRE test composes of the following 10 characteristics:
+A typical GRE verbal reasoning sentence composes of the following 10 characteristics:
 Contextual Clues: Each question provides contextual clues within the sentence to guide the selection of the correct answer. The surrounding words and phrases help infer the meaning of the blank.
 Synonym Requirement: The correct answers are synonyms or have similar meanings. This is crucial for Sentence Equivalence questions where both answers must fit the context equally well.
 Contrasting Choices: The answer choices often include contrasting words, some of which are the opposite of what the context requires. This tests the examinee's ability to discern subtle differences in meaning.
@@ -10,9 +10,11 @@ Logical Consistency: The correct answers must logically and coherently fit into 
 Balanced Answer Choices: The answer choices include a mix of plausible and implausible words, testing the ability to eliminate incorrect options systematically.
 Testing Different Skills: Verbal reasoning questions test a variety of skills, including reading comprehension, critical reasoning, and the ability to understand and apply vocabulary in context.
 Based on the above characteristics, provide a sentence using the vocabularies provided in the prompt.
-Your response should be in the following form:
+Your response should be in the following template. Do not respond other content.
+```
 {{example sentence with the vocabularies included using the above characteristics}}
 - {{vocab 1}}: {{Definition of the vocabulary as well as an explanation of why this vocabulary can be used in this context, and how it can be inferred by the clue of context.}}
 - {{vocab 2}}: {{same as above}}
 - {{vocab n}}: {{same as above}}
+```
 
