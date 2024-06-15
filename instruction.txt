@@ -1,18 +1,19 @@
 A typical GRE verbal reasoning sentence composes of the following 10 characteristics:
-Contextual Clues: Each question provides contextual clues within the sentence to guide the selection of the correct answer. The surrounding words and phrases help infer the meaning of the blank.
-Synonym Requirement: The correct answers are synonyms or have similar meanings. This is crucial for Sentence Equivalence questions where both answers must fit the context equally well.
-Contrasting Choices: The answer choices often include contrasting words, some of which are the opposite of what the context requires. This tests the examinee's ability to discern subtle differences in meaning.
-Complex Sentences: The sentences often contain complex structures and advanced vocabulary, requiring a good understanding of grammar and word usage.
-Inference: Many questions require the test-taker to make inferences based on the given information, rather than relying on straightforward, explicit statements.
-Vocabulary Knowledge: A strong vocabulary is essential, as the questions use a range of words from common to advanced levels. Understanding nuanced meanings is crucial.
-Ambiguity: Some questions are designed to be somewhat ambiguous, requiring careful consideration of all answer choices to determine which pair fits best.
-Logical Consistency: The correct answers must logically and coherently fit into the sentence, maintaining its overall meaning and flow.
-Balanced Answer Choices: The answer choices include a mix of plausible and implausible words, testing the ability to eliminate incorrect options systematically.
-Testing Different Skills: Verbal reasoning questions test a variety of skills, including reading comprehension, critical reasoning, and the ability to understand and apply vocabulary in context.
+- Contextual Clues: Each question provides contextual clues within the sentence to guide the selection of the correct answer. The surrounding words and phrases help infer the meaning of the blank.
+- Synonym Requirement: The correct answers are synonyms or have similar meanings. This is crucial for Sentence Equivalence questions where both answers must fit the context equally well.
+- Contrasting Choices: The answer choices often include contrasting words, some of which are the opposite of what the context requires. This tests the examinee's ability to discern subtle differences in meaning.
+- Complex Sentences: The sentences often contain complex structures and advanced vocabulary, requiring a good understanding of grammar and word usage.
+- Inference: Many questions require the test-taker to make inferences based on the given information, rather than relying on straightforward, explicit statements.
+- Vocabulary Knowledge: A strong vocabulary is essential, as the questions use a range of words from common to advanced levels. Understanding nuanced meanings is crucial.
+- Ambiguity: Some questions are designed to be somewhat ambiguous, requiring careful consideration of all answer choices to determine which pair fits best.
+- Logical Consistency: The correct answers must logically and coherently fit into the sentence, maintaining its overall meaning and flow.
+- Balanced Answer Choices: The answer choices include a mix of plausible and implausible words, testing the ability to eliminate incorrect options systematically.
+- Testing Different Skills: Verbal reasoning questions test a variety of skills, including reading comprehension, critical reasoning, and the ability to understand and apply vocabulary in context.
+An example sentence that has these features is: "The twins' heredity and upbringing were identical in nearly every respect, yet one child remained unfailingly sanguine even in times of stress while her sister was prone to angry outbursts that indicated an exceptionally choleric temperament."
 Based on the above characteristics, provide a sentence using the vocabularies provided in the prompt.
-Your response should be in the following template. Do not respond other content.
+Your response should be in the following template. Do not respond other content. Avoid markdown formats.
 
-{{a complete example sentence with the vocabularies included using the above characteristics}}
+{{a complete example sentence with the vocabularies included using the above characteristics. Do not include blanks.}}
 - {{vocab 1}}: {{Definition of the vocabulary as well as an explanation of why this vocabulary can be used in this context, and how it can be inferred by the clue of context.}}
 - {{vocab 2}}: {{same as above}}
 - {{vocab n}}: {{same as above}}
