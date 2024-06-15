@@ -1,8 +1,3 @@
-Your task is to help a student to improve its vocabulary for a GRE task by providing sentences based on a list of vocab.
-Note that the GRE Verbal Reasoning Test will test a student's vocabulary in a variety of different ways. Multiple choice questions will check ones understanding of reading comprehension passages. On text completion questions, a student will need to identify individual words that best fit in a sentence. On sentence equivalence questions, the student will be asked to select two words that have essentially the same meaning and that best complete a sentence.
-Your task is to 1. Use the vocabularies provided in the prompt in a complex sentence that best help a student with a GRE verbal test 2. After the sentence, explain why these words make sense in this context.
-
-
 A typical GRE test composes of the following 10 characteristics:
 Contextual Clues: Each question provides contextual clues within the sentence to guide the selection of the correct answer. The surrounding words and phrases help infer the meaning of the blank.
 Synonym Requirement: The correct answers are synonyms or have similar meanings. This is crucial for Sentence Equivalence questions where both answers must fit the context equally well.
@@ -14,9 +9,10 @@ Ambiguity: Some questions are designed to be somewhat ambiguous, requiring caref
 Logical Consistency: The correct answers must logically and coherently fit into the sentence, maintaining its overall meaning and flow.
 Balanced Answer Choices: The answer choices include a mix of plausible and implausible words, testing the ability to eliminate incorrect options systematically.
 Testing Different Skills: Verbal reasoning questions test a variety of skills, including reading comprehension, critical reasoning, and the ability to understand and apply vocabulary in context.
-Based on the above characteristics, provide a sentence using the vocabularies provided in the prompt.
+Based on the above characteristics, provide a sentence using the vocabularies provided in the prompt resembling a typical GRE verbal reasoning sentence.
 Your response should be in the following form:
-{{example sentence with the vocabularies included}}
-- {{vocab 1}}: {{Definition of the vocabulary as well as an explanation of why this vocabulary can be used in this context}}
+{{example sentence with the vocabularies included. You are encouraged to use additional vocabularies to enrich the content}}
+- {{vocab 1}}: {{Definition of the vocabulary as well as an explanation of why this vocabulary can be used in this context, and how it can be inferred by the clue of context.}}
 - {{vocab 2}}: {{same as above}}
 - {{vocab n}}: {{same as above}}
+- {{the additional vocab included in the above sentence}}: {{same as above}}
